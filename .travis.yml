@@ -11,16 +11,17 @@ before_script:
 - git config --global user.name 'Victor Miguez'
 - git config --global user.email 'victorcineis@gmail.com'
 
-# script:
-# - webpack -p --config ./webpack.config.js
+script:
+- webpack -p --config ./webpack.config.js
 
 after_success:
-- mkdir .deploy
-- cd .deploy
-- git clone --depth 1 --branch gh-pages --single-branch $DEPLOY_REPO . || (git init && git remote add -t gh-pages origin $DEPLOY_REPO)
-# - rm -rf ./*
-# - cp -r ../public/* .
-# - git add -A .
-# - git commit -m 'Site updated'
-# - git branch -m gh-pages
-# - git push -q -u origin gh-pages
+- mkdir deploy
+- cp -r dist deploy
+- cp index.html deploy
+- cd deploy
+- git init
+- git remote add origin $DEPLOY_REPO
+- git checkout -b gh-pages
+- git add -A .
+- git commit -m $TRAVIS_BUILD_NUMBER
+- git push -q -u origin gh-pages
