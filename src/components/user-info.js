@@ -9,21 +9,21 @@ const UserInfo = ({ userInfo }) => (
     <div className='card is-fullwidth'>
       <div className='card-image'>
         <figure className='image'>
-          <img src={userInfo.photo} alt='' />
+          <img src={userInfo.avatar_url} alt='' />
         </figure>
       </div>
 
       <div className='card-content'>
         <h1 className='username title is-3'>
           <a href={`https://github.com/${userInfo.login}`} target='_blank'>
-            {userInfo.username}
+            {userInfo.name}
           </a>
         </h1>
 
         <div className='repos-info level'>
           <div className='level-item has-text-centered'>
             <p className='heading'>Repositórios</p>
-            <p className='title'>{userInfo.repos}</p>
+            <p className='title'>{userInfo.public_repos}</p>
           </div>
           <div className='level-item has-text-centered'>
             <p className='heading'>Seguidores</p>

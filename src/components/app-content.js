@@ -6,9 +6,9 @@ import Search from './search'
 import UserInfo from './user-info'
 import Repos from './repos'
 
-const AppContent = ({ userInfo, repos, starred }) => (
+const AppContent = ({ userInfo, repos, starred, handleSearch }) => (
   <div className='app container content'>
-    <Search />
+    <Search handleSearch={handleSearch} />
 
     <div className='tile is-ancestor'>
       {!!userInfo && <UserInfo userInfo={userInfo} />}
@@ -35,7 +35,7 @@ const AppContent = ({ userInfo, repos, starred }) => (
 )
 
 AppContent.propTypes = {
-  userInfo: PropTypes.object.isRequired,
+  userInfo: PropTypes.object,
   repos: PropTypes.array.isRequired,
   starred: PropTypes.array.isRequired
 }

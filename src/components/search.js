@@ -1,17 +1,24 @@
 'use strict'
 
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-const Search = () => (
+const Search = ({ handleSearch }) => (
   <div className='columns'>
-    <div className='search column control'>
+    <form
+      onSubmit={handleSearch}
+      className='search column control'>
       <input
+        name='search'
         className='input'
         type='search'
         placeholder='Digite o nome do usuário'
       />
-    </div>
+    </form>
   </div>
 )
+
+Search.propTypes = {
+  handleSearch: PropTypes.func.isRequired
+}
 
 export default Search
