@@ -43,10 +43,10 @@ const UserInfo = ({ userInfo }) => (
 
 UserInfo.propTypes = {
   userInfo: PropTypes.shape({
-    photo: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
+    avatar_url: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     login: PropTypes.string.isRequired,
-    repos: PropTypes.number.isRequired,
+    public_repos: PropTypes.number.isRequired,
     followers: PropTypes.number.isRequired,
     following: PropTypes.number.isRequired
   })
