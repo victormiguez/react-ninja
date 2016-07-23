@@ -4,12 +4,12 @@ import React, { PropTypes } from 'react'
 
 import Actions from './actions'
 
-const UserInfo = ({ userInfo }) => (
+const UserInfo = ({ userInfo, handlePublicReposSearch, handleStarredSearch }) => (
   <div className='tile is-parent user-info'>
     <div className='card is-fullwidth'>
       <div className='card-image'>
         <figure className='image'>
-          <img src={userInfo.avatar_url} alt='' />
+          <img src={userInfo.avatarUrl} alt='' />
         </figure>
       </div>
 
@@ -23,7 +23,7 @@ const UserInfo = ({ userInfo }) => (
         <div className='repos-info level'>
           <div className='level-item has-text-centered'>
             <p className='heading'>Repositórios</p>
-            <p className='title'>{userInfo.public_repos}</p>
+            <p className='title'>{userInfo.publicRepos}</p>
           </div>
           <div className='level-item has-text-centered'>
             <p className='heading'>Seguidores</p>
@@ -36,17 +36,20 @@ const UserInfo = ({ userInfo }) => (
         </div>
       </div>
 
-      <Actions />
+      <Actions
+        handlePublicReposSearch={handlePublicReposSearch}
+        handleStarredSearch={handleStarredSearch}
+      />
     </div>
   </div>
 )
 
 UserInfo.propTypes = {
   userInfo: PropTypes.shape({
-    avatar_url: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     login: PropTypes.string.isRequired,
-    public_repos: PropTypes.number.isRequired,
+    publicRepos: PropTypes.number.isRequired,
     followers: PropTypes.number.isRequired,
     following: PropTypes.number.isRequired
   })

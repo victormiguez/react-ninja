@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       userInfo: null,
-      repos: [],
+      publicRepos: [],
       starred: []
     }
   }
@@ -25,10 +25,10 @@ class App extends Component {
       ({ avatar_url, name, login, public_repos, followers, following }) => {
         this.setState({
           userInfo: {
-            avatar_url,
+            avatarUrl: avatar_url,
             name,
             login,
-            public_repos,
+            publicRepos: public_repos,
             followers,
             following
           }
@@ -36,13 +36,37 @@ class App extends Component {
       })
   }
 
+  handlePublicReposSearch () {
+    const login = this.state.userInfo.login
+    ajax()
+    .get(`https://api.github.com/users/${login}/repos`)
+    .then((repos) => {
+      this.setState({
+        publicRepos: repos
+      })
+    })
+  }
+
+  handleStarredSearch () {
+    const login = this.state.userInfo.login
+    ajax()
+    .get(`https://api.github.com/users/${login}/starred`)
+    .then((repos) => {
+      this.setState({
+        starred: repos
+      })
+    })
+  }
+
   render () {
     return (
       <AppContent
         userInfo={this.state.userInfo}
-        repos={this.state.repos}
+        publicRepos={this.state.publicRepos}
         starred={this.state.starred}
         handleSearch={(e) => this.handleSearch(e)}
+        handlePublicReposSearch={() => this.handlePublicReposSearch()}
+        handleStarredSearch={() => this.handleStarredSearch()}
       />
     )
   }
