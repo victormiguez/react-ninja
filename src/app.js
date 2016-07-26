@@ -38,17 +38,6 @@ class App extends Component {
       })
   }
 
-  handlePublicReposSearch () {
-    const login = this.state.userInfo.login
-    ajax()
-    .get(`https://api.github.com/users/${login}/repos`)
-    .then((repos) => {
-      this.setState({
-        publicRepos: repos
-      })
-    })
-  }
-
   getRepos (type) {
     return () => {
       const login = this.state.userInfo.login
