@@ -11,9 +11,11 @@ class App extends Component {
 
     this.state = {
       userInfo: null,
-      publicRepos: [],
+      repos: [],
       starred: []
     }
+
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   handleSearch (event) {
@@ -45,7 +47,10 @@ class App extends Component {
       .get(`https://api.github.com/users/${login}/${type}`)
       .then((repos) => {
         this.setState({
-          [type]: repos
+          [type]: repos.map((repo, index) => ({
+            name: repo.name,
+            link: repo.html_url
+          }))
         })
       })
     }
@@ -55,9 +60,9 @@ class App extends Component {
     return (
       <AppContent
         userInfo={this.state.userInfo}
-        publicRepos={this.state.repos}
+        repos={this.state.repos}
         starred={this.state.starred}
-        handleSearch={(e) => this.handleSearch(e)}
+        handleSearch={this.handleSearch}
         handlePublicReposSearch={this.getRepos('repos')}
         handleStarredSearch={this.getRepos('starred')}
       />

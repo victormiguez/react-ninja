@@ -6,7 +6,7 @@ import Search from './search'
 import UserInfo from './user-info'
 import Repos from './repos'
 
-const AppContent = ({ userInfo, publicRepos, starred, handleSearch, handlePublicReposSearch, handleStarredSearch }) => (
+const AppContent = ({ userInfo, repos, starred, handleSearch, handlePublicReposSearch, handleStarredSearch }) => (
   <div className='app container content'>
     <Search handleSearch={handleSearch} />
 
@@ -14,11 +14,11 @@ const AppContent = ({ userInfo, publicRepos, starred, handleSearch, handlePublic
       {!!userInfo && <UserInfo userInfo={userInfo} handlePublicReposSearch={handlePublicReposSearch} handleStarredSearch={handleStarredSearch} />}
 
       <div className='tile is-6 is-vertical is-parent'>
-        {!!publicRepos.length &&
+        {!!repos.length &&
           <Repos
             className='repos'
             title='Repositórios'
-            repos={publicRepos}
+            repos={repos}
           />
         }
 
@@ -36,7 +36,7 @@ const AppContent = ({ userInfo, publicRepos, starred, handleSearch, handlePublic
 
 AppContent.propTypes = {
   userInfo: PropTypes.object,
-  publicRepos: PropTypes.array.isRequired,
+  repos: PropTypes.array.isRequired,
   starred: PropTypes.array.isRequired
 }
 
