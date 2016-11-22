@@ -16,5 +16,5 @@ npm start
 ## TODO
 
 - [x] Buscar usuários do GitHub
-- [ ] Buscar repositórios do usuário
-- [ ] Buscar repositórios favoritos do usuário
+- [x] Buscar repositórios do usuário
+- [x] Buscar repositórios favoritos do usuário
