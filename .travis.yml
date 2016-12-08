@@ -21,7 +21,6 @@ after_success:
 - cd deploy
 - git init
 - git remote add origin $DEPLOY_REPO
-- git checkout -b gh-pages
 - git add -A .
 - git commit -m $TRAVIS_BUILD_NUMBER
-- git push -f -u origin gh-pages
+- git push -f -u -q origin master:gh-pages
